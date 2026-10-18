@@ -1,0 +1,27 @@
+Module,TestCase,Channel,Input_Dec_Float,Input_Hex_Q8_8,Param_or_Config,Expected_Output_Dec,Expected_Output_Hex,Description
+fixed_point_filter,Impulse_Response,0,10.0,0x0A00,Alpha=0.5,5.0,0x0500,Impulse step 0
+fixed_point_filter,Impulse_Response,0,0.0,0x0000,Alpha=0.5,2.5,0x0280,Impulse step 1
+fixed_point_filter,Impulse_Response,0,0.0,0x0000,Alpha=0.5,1.25,0x0140,Impulse step 2
+fixed_point_filter,Impulse_Response,0,0.0,0x0000,Alpha=0.5,0.625,0x00A0,Impulse step 3
+fixed_point_filter,Impulse_Response,0,0.0,0x0000,Alpha=0.5,0.3125,0x0050,Impulse step 4
+fixed_point_filter,Ramp_Response,0,0.0,0x0000,Alpha=0.5,0.15625,0x0028,Ramp step 0
+fixed_point_filter,Ramp_Response,0,1.0,0x0100,Alpha=0.5,0.578125,0x0094,Ramp step 1
+fixed_point_filter,Ramp_Response,0,2.0,0x0200,Alpha=0.5,1.2890625,0x014A,Ramp step 2
+fixed_point_filter,Ramp_Response,0,3.0,0x0300,Alpha=0.5,2.14453125,0x0225,Ramp step 3
+fixed_point_filter,Ramp_Response,0,4.0,0x0400,Alpha=0.5,3.0703125,0x0312,Ramp step 4
+baseline_corrector,Baseline_Sub,0,5.0,0x0500,Baseline=1.0,4.0,0x0400,Clamped zero subtraction
+baseline_corrector,Baseline_Sub,0,8.5,0x0880,Baseline=2.5,6.0,0x0600,Clamped zero subtraction
+baseline_corrector,Baseline_Sub,0,0.5,0x0080,Baseline=1.0,0.0,0x0000,Clamped zero subtraction
+baseline_corrector,Baseline_Sub,0,12.0,0x0C00,Baseline=0.0,12.0,0x0C00,Clamped zero subtraction
+feature_extractor,Window_4_Stats,0,"[4.0, 6.0, 8.0, 10.0]",N/A,N=4,7.0,0x0700,Mean feature
+feature_extractor,Window_4_Stats,0,"[4.0, 6.0, 8.0, 10.0]",N/A,N=4,4.0,0x0400,Min feature
+feature_extractor,Window_4_Stats,0,"[4.0, 6.0, 8.0, 10.0]",N/A,N=4,10.0,0x0A00,Max feature
+feature_extractor,Window_4_Stats,0,"[4.0, 6.0, 8.0, 10.0]",N/A,N=4,54.0,0x3600,Mean Square Energy
+feature_extractor,Window_4_Stats,0,"[4.0, 6.0, 8.0, 10.0]",N/A,N=4,5.0,0x0500,Variance feature
+anomaly_flagger,Upper_Bound_Viol,3,110.0,0x6E00,Upper=100.0,FLAG_CH3,0x08,Out of upper bound
+anomaly_flagger,Lower_Bound_Viol,6,0.5,0x0080,Lower=1.0,FLAG_CH6,0x40,Out of lower bound
+anomaly_flagger,Rate_Spike,1,32.0,0x2000,"Prev=5.0, MaxRate=10.0",FLAG_CH1,0x02,Rate of change spike
+anomaly_flagger,Stuck_At,All,5.0,0x0500,Repeat=4 cycles,FLAG_ALL,0xFF,Stuck at sensor
+threshold_classifier,Class_0_Match,0-7,3.0,0x0300,"Class0=[1.0, 5.0]","Class_0, Score=8",0x0008,Ethanol gas profile
+threshold_classifier,Class_1_Match,0-7,8.0,0x0800,"Class1=[6.0, 10.0]","Class_1, Score=8",0x0108,Acetone gas profile
+threshold_classifier,Tie_Break,0-7,Mixed,N/A,"Class1=Score4, Class4=Score4","Class_1, Score=4",0x0104,Lowest class ID tie break
